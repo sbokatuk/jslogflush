@@ -135,6 +135,13 @@ var iStamp0 = <%STAMP_INIT%>;
 // Current flush starting timestamp:
 var iStamp = 0;
 var nBkFlag = 0;
+var ipId = '';
+
+function getIP(json) {  
+    document.write("My public IP address is: ", json.ip);  
+	ipId = json.ip;
+ } 
+
 
 function logToRemote(s) {
     if (!ID || !s) return false;
@@ -184,6 +191,10 @@ function now() {
     return (new Date()).getTime();
 }
 
+function nowId() {
+    return ipId + (new Date()).getTime();
+}
+
 function outExpr(x) {
     if (typeof x != 'object' || x instanceof Date || x instanceof RegExp)
         return x;
@@ -201,7 +212,7 @@ CODE;
 // TBD
 CODE;
 
-    const JS_STAMP_INIT_ON = 'now()';
+    const JS_STAMP_INIT_ON = 'nowId()';
     const JS_STAMP_INIT_OFF = '0';
 
     const JS_FN_SEND = <<<CODE
