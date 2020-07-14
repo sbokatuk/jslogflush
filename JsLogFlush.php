@@ -141,7 +141,7 @@ function getIP(json) {
     document.write("My public IP address is: ", json.ip);  
 	ipId = json.ip;
  } 
-
+window.getIP = getIP;
 
 function logToRemote(s) {
     if (!ID || !s) return false;
